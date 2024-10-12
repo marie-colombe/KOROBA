@@ -1,0 +1,74 @@
+# Fichiers Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.pdb
+*.egg
+*.egg-info/
+.eggs/
+
+# Environnement virtuel (si vous utilisez un)
+env/
+venv/
+ENV/
+ENV.bak/
+.venv/
+
+# Configuration IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Fichiers générés par pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Django :
+*.log
+*.pot
+*.py[cod]
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+
+# Configuration de la base de données locale
+/local_settings.py
+/local_settings.json
+
+# Fichiers de migration
+**/migrations/*.py
+**/migrations/*.pyc
+
+# Node modules (si vous utilisez un projet Django avec du JavaScript/Node)
+node_modules/
+
+# Répertoire des fichiers statiques (collectés avec `collectstatic`)
+static/
+
+# Fichiers des tests de couverture
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# Fichiers temporaires d'édition
+*.swp
+*.bak
+*.tmp
+*.orig
+*.save
+
+# Fichiers de production (comme les clés secrètes)
+.env
+*.env
+
+
