@@ -53,10 +53,40 @@ Créer un dosssier pour contenir tout notre projet
 Ouvrir le terminal et se déplacer jusqu'au dossier ave la commande cd 
 
 Creer l'environnement virtuel avec
+
 python -m venv env
+
 Activer son environnement virtuel
+
 .\env\Scripts\activate
 
+Telecharger le projet avec ce lien ou avec la commande
+
+git clone https://github.com/marie-colombe/KOROBA-BACK-END.git
+
+Apres telechargement, s'assurer d'avoir l'environnement virtuel ainsi que les dossiers et fichiers
+du projet telechargés dans le dossier (celui creer au depart et sur qui pointe notre terminal)
+
+Installer les dépendances de notre projet avec la commande suivante: 
+
+pip install -r requirements.txt
+
+On s'assure d'avoir creer une base de donnée dans Postegresql et on verifie
+la configuration dans le fichier settings.py contenu dans le dossier management.
+
+On lance nos migrations avec
+
+  python src\manage.py makemigrations 
+    
+  python src\manage.py migrate 
+    
+  On lance notre projet
+
+  python src\manage.py runserver
+
+  On va dans le navigateur et on tape
+
+   http://127.0.0.1:8000
 
 
 
