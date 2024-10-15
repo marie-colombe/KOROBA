@@ -14,3 +14,26 @@ DEVELOPPEUR FRONT-END:
 - GOULIZAN Racine
 - BERTHE Habib
 - NYOA Ama Marie-Colombe
+
+***Nos differentes fonctionnalités***
+
+. Gestion des clients
+
+  
+.Gestion du panier
+
+
+.Gestion de la méthode de paiement
+
+
+.Gestion des commandes
+
+
+.Gestion des produits
+
+
+.Gestion des artisans
+
+
+
+
