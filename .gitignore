@@ -31,8 +31,13 @@ pip-delete-this-directory.txt
 *.py[cod]
 db.sqlite3
 db.sqlite3-journal
+
+# Répertoires médias (chargés par les utilisateurs)
 media/
+
+# Répertoires statiques collectés
 staticfiles/
+static/
 
 # Configuration de la base de données locale
 /local_settings.py
@@ -41,12 +46,11 @@ staticfiles/
 # Fichiers de migration
 **/migrations/*.py
 **/migrations/*.pyc
+# Garde le fichier __init__.py dans les migrations pour les rendre utilisables
+!**/migrations/__init__.py
 
 # Node modules (si vous utilisez un projet Django avec du JavaScript/Node)
 node_modules/
-
-# Répertoire des fichiers statiques (collectés avec `collectstatic`)
-static/
 
 # Fichiers des tests de couverture
 htmlcov/
@@ -71,4 +75,8 @@ coverage.xml
 .env
 *.env
 
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
 
+# Rapport de test pytest
+pytest_cache/
