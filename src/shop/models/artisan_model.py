@@ -51,6 +51,10 @@ class ArtisanModel(AbstractUser,DateTimeModel):
         blank=True
     )
     
+    class Meta:
+        verbose_name = "Artisan"
+        verbose_name_plural = "Artisans"
+
     def __str__(self):
         return self.username
 

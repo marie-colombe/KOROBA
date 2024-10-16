@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-vyx#x589a&os4ntync++8%+kixdtyr0o28x!&&s(7qc(0k6+7x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,15 +40,20 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'rest_framework',
+    'rest_framework_simplejwt',
+    'drf_yasg',
+    'django_filters',
 
     # customs apps
     'base.apps.BaseConfig',
     'customer.apps.CustomerConfig',
-     'product.apps.ProductConfig',
+     
+    #  'product.apps.ProductConfig',
      'report.apps.ReportConfig',
      'paiement.apps.PaiementConfig',
-     'carts.apps.CartsConfig',
-     'artisan.apps.ArtisanConfig',
+    #  'carts.apps.CartsConfig',
+    #  'artisan.apps.ArtisanConfig',
+     'shop.apps.ShopConfig',
 
 ]
 
@@ -82,12 +88,44 @@ TEMPLATES = [
 WSGI_APPLICATION = 'management.wsgi.application'
 
 REST_FRAMEWORK = {
-     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ],
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+        'rest_framework.permissions.AllowAny',
+    ],
+    
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.SearchFilter',
+        'rest_framework.filters.OrderingFilter',
+    ],
+
+    # 'DEFAULT_AUTHENTICATION_CLASSES': (
+        
+    #     'rest_framework_simplejwt.authentication.JWTAuthentication',
+    # )
+}
+
+SWAGGER_SETTINGS ={
+    'SECURITY_DEFINITIONS':{
+        'Bearer': {
+            'type': 'apiKey',
+            'name' : 'Authorization',
+            'in' : 'header',
+            'description': "JWT Authorization header using the Bearer scheme . Example: 'Authorization: Bearer <token>' "
+        },
+    },
+    'USE_SESSION_AUTH': False,
+    'REFETCH_SCHEMA_WITH_AUTH' : True,
+    'LOGIN_URL': 'rest_framework:login',
+    'LOGOUT_URL' : 'rest_framework:logout',
+}
+
+
+SIMPLE_JWT ={
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken", "rest_framework_simplejwt.tokens.SlidingToken"),
+    "SLIDING_TOKEN_LIFETIME": timedelta(minutes=5),
+    "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=1),
 }
 
 # Database

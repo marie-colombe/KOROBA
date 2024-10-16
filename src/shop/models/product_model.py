@@ -1,6 +1,6 @@
 from django.db import models
 from base.models.helpers.date_time_model import DateTimeModel
-from artisan.models.artisan_model import ArtisanModel
+from shop.models.artisan_model import ArtisanModel
 from django.contrib.auth.models import Group, Permission
 
 class ProductModel(DateTimeModel):
@@ -12,15 +12,19 @@ class ProductModel(DateTimeModel):
 
     groups = models.ManyToManyField(
         Group,
-        related_name='product_users',  # Nom unique pour éviter les conflits
+        related_name='product_users',  
         blank=True
     )
     
     user_permissions = models.ManyToManyField(
         Permission,
-        related_name='product_permissions',  # Nom unique pour éviter les conflits
+        related_name='product_permissions',  
         blank=True
     )
+
+    class Meta:
+        verbose_name = "Product"
+        verbose_name_plural = "Products"
 
     def __str__(self):
         return self.name_product
